@@ -1,0 +1,14 @@
+const FlavorSection = () => {
+  return (
+    <section className="flavor-section">
+       <div className="h-full flex lg:flex-row items-center relative">
+         <div className="lg:w-[57%] flex-none h-80 lg:h-full md:mt-20xl xl:mt-0">
+             <FlavorSection />
+         </div>
+         <div></div>
+       </div>
+    </section>
+  )
+}
+
+export default FlavorSection
