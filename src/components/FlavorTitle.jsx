@@ -1,5 +1,52 @@
+import { useGSAP } from "@gsap/react"
+import gsap from "gsap";
+import { SplitText } from "gsap/all"
+
 const FlavorTitle = () => {
+
+
+  useGSAP(() => {
+    const firstTextSplt = SplitText.create(".first-text-split h1", {
+      type: "chars",
+    });
+    const secondTextSplt = SplitText.create(".second-text-split h1", {
+      type: "chars",
+    });
+
+    gsap.from(firstTextSplt.chars, {
+      yPercent: 200,
+      stagger: 0.02,
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: ".flavor-section",
+        start: "top 40%",
+        
+      }
+    })
+
+    gsap.to(".flavor-text-scroll", {
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+      scrollTrigger: {
+        trigger: ".flavor-section",
+        start: "top 10%",
+       
+      }
+    })
+
+    gsap.from(secondTextSplt.chars, {
+      yPercent: 200,
+      stagger: 0.02,
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: ".flavor-section",
+        start: "top 1%",
+        
+      }
+    })
+  })
+
   return (
+
     <div
       className="general-title col-center h-full 2xl:gap-32 xl:gap-24
     gap-16"
@@ -8,14 +55,16 @@ const FlavorTitle = () => {
            <h1>We have 6</h1>
         </div>
 
-        <div style={{}} className="flavor-text-scroll">
+        <div style={{
+          clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)", 
+        }} className="flavor-text-scroll">
               <div className="bg-mid-brown pb-5 2xl:pt-0 pt-3 2xl:px-5 px-3">
                   <h2 className="text-milk">freaking</h2>
               </div>
         </div>
 
         <div className="overflow-hidden 2xl:py-0 py-3 second-text-split">
-             <h1>Delicious flowers</h1>
+             <h1>Delicious flavors</h1>
         </div>
     </div>
   )
